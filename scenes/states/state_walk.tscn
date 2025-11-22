@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://plpm7ofw6w85"]
+
+[ext_resource type="Script" uid="uid://ta28cnynauvy" path="res://scenes/states/state_walk.gd" id="1_6alpr"]
+
+[node name="StateWalk" type="Node"]
+script = ExtResource("1_6alpr")
+metadata/_custom_type_script = "uid://bim5wrc8i8eo"

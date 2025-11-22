@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccswq5ld6w2qi"]
+
+[ext_resource type="Script" uid="uid://dphl7df2vssdm" path="res://scenes/AI/actions/action_attack_meele.gd" id="1_gcggw"]
+
+[node name="ActionAttackMeele" type="Node"]
+script = ExtResource("1_gcggw")
+metadata/_custom_type_script = "uid://b1mdyr0h5otsk"

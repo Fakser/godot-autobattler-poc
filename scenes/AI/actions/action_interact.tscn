@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsax46vbcf5ua"]
+
+[ext_resource type="Script" uid="uid://caggc2hkcaho1" path="res://scenes/AI/actions/action_interact.gd" id="1_2dcby"]
+
+[node name="ActionInteract" type="Node"]
+script = ExtResource("1_2dcby")
+metadata/_custom_type_script = "uid://b1mdyr0h5otsk"

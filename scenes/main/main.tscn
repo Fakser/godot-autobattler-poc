@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0wxyugbohrep"]
+
+[ext_resource type="Script" uid="uid://ckedsp21v7lt7" path="res://scenes/main/main.gd" id="1_iuonh"]
+[ext_resource type="PackedScene" uid="uid://dab0yrflo23hu" path="res://scenes/level/level.tscn" id="1_k2fmo"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_iuonh")
+metadata/_edit_lock_ = true
+
+[node name="Level" parent="." instance=ExtResource("1_k2fmo")]
+position = Vector2(1, 1)

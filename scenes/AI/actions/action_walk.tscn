@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd0rgb4upb4og"]
+
+[ext_resource type="Script" uid="uid://ce6wisggqpehy" path="res://scenes/AI/actions/action_walk.gd" id="1_se5ps"]
+
+[node name="ActionWalk" type="Node"]
+script = ExtResource("1_se5ps")
+metadata/_custom_type_script = "uid://b1mdyr0h5otsk"

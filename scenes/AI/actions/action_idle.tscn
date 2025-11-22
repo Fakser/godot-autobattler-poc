@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7ltulumdkfkt"]
+
+[ext_resource type="Script" uid="uid://bneiwyonj7iwv" path="res://scenes/AI/actions/action_idle.gd" id="1_ndlkr"]
+
+[node name="ActionIdle" type="Node"]
+script = ExtResource("1_ndlkr")
+metadata/_custom_type_script = "uid://b1mdyr0h5otsk"
