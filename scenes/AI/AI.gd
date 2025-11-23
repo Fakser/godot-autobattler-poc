@@ -15,7 +15,7 @@ func _ready() -> void:
 		#current_action = actions["actionidle"]
 
 func _sort_actions(a, b) -> bool:
-	if a[2] < b[2]:
+	if a[2] > b[2]:
 		return true
 	return false
 
@@ -30,7 +30,8 @@ func get_possible_actions() -> Array:
 				for j in tile_grid[i].size():
 					var tile = tile_grid[i][j]
 					var action_value = action.get_action_value(self.unit, tile)
-					possible_actions.append([action, tile, action_value])
+					if action_value > 0:
+						possible_actions.append([action, tile, action_value])
 
 	return possible_actions
 
@@ -41,3 +42,4 @@ func set_new_action() -> void:
 	current_action = possible_actions[0][0]
 	current_action.target = possible_actions[0][1]
 	current_action.done = false
+	print(possible_actions[0])

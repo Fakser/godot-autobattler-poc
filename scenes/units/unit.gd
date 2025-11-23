@@ -6,7 +6,15 @@ class_name Unit
 @export var ai: AI
 @export var level: Level
 @export var speed = 1
+
 var turn: int = 0
+var unit_id: int
 var id_path: Array
 var fraction: int
 var _fractions: Fractions
+
+func set_unit_id(id: int) -> void:
+	if self.unit_id:
+		return
+	else:
+		self.unit_id = id

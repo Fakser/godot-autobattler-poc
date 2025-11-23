@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4ykuqbuxa4fn"]
+
+[ext_resource type="Script" uid="uid://n5lbd1wrjhla" path="res://scenes/states/state_follow.gd" id="1_dbr21"]
+
+[node name="StateFollow" type="Node"]
+script = ExtResource("1_dbr21")
+metadata/_custom_type_script = "uid://bim5wrc8i8eo"

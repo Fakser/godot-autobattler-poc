@@ -1,7 +1,7 @@
 extends Node
 class_name Action
 
-var target: Variant
+var target
 var done: bool = false
 
 func get_action_value(unit, tile) -> int:

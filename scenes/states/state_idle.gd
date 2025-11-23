@@ -14,7 +14,7 @@ func physics_update(delta: float):
 			unit.ai.set_new_action()
 		if unit.ai.current_action is ActionAttackMeele:
 			if not unit.ai.current_action.is_in_meele_distance(unit):
-				state_exited.emit(self, "statewalk")
+				state_exited.emit(self, "statefollow")
 			else:
 				state_exited.emit(self, "stateidle")
 		if unit.ai.current_action is ActionWalk:

@@ -32,9 +32,9 @@ var FRACTIONS_RELATIONS_MAP = {}
 
 func _fraction_relation_key(fraction_a: int, fraction_b: int) -> String:
 	var fractions = [fraction_a, fraction_b]
-	fractions.sort
+	fractions.sort()
 	var fraction_relation_key = "%s_%s"
-	fraction_relation_key % fractions
+	fraction_relation_key = fraction_relation_key % fractions
 	return fraction_relation_key
 
 func get_fraction_relation(fraction_a: int, fraction_b: int) -> int:
@@ -45,3 +45,8 @@ func _init() -> void:
 	for fraction_relation in _fractions_relations_list:
 		var fraction_relation_key = _fraction_relation_key(fraction_relation[0], fraction_relation[1])
 		FRACTIONS_RELATIONS_MAP[fraction_relation_key] = fraction_relation[2]
+		#fraction_relation_key = _fraction_relation_key(fraction_relation[1], fraction_relation[0])
+		#FRACTIONS_RELATIONS_MAP[fraction_relation_key] = fraction_relation[2]
+	for fraction in FRACTIONS.values():
+		var fraction_relation_key = _fraction_relation_key(fraction, fraction)
+		FRACTIONS_RELATIONS_MAP[fraction_relation_key] = RELATIONS.ALLIANCE
