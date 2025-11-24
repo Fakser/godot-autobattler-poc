@@ -3,6 +3,9 @@ class_name StateWalk
 
 var target_position
 
+func update(delta: float):
+	unit.animation.play("walk")
+
 func enter():
 	# get next tile id
 	var unit_position_id = unit.level.tile_map.local_to_map(unit.global_position)
@@ -18,6 +21,8 @@ func enter():
 		target_position = unit.level.tile_map.map_to_local(unit.id_path[0])
 		if unit.level.tile_map.local_to_map(unit.ai.current_action.target.position) == unit.id_path[0]:
 			unit.ai.current_action.done = true
+	else:
+		unit.ai.current_action.done = true
 	
 func physics_update(delta: float):
 	if unit.id_path.is_empty():

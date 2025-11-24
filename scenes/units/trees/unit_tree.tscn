@@ -22,7 +22,8 @@ initial_state = NodePath("StateIdle")
 [node name="StateIdle" parent="StateMachine" node_paths=PackedStringArray("unit") instance=ExtResource("4_kdusm")]
 unit = NodePath("../..")
 
-[node name="AI" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("5_vt7ih")]
+[node name="AI" parent="." node_paths=PackedStringArray("default_action", "unit") instance=ExtResource("5_vt7ih")]
+default_action = NodePath("ActionIdle")
 unit = NodePath("..")
 
 [node name="ActionIdle" parent="AI" instance=ExtResource("6_kdusm")]

@@ -5,9 +5,10 @@ class_name Unit
 @export var state_machine: StateMachine
 @export var ai: AI
 @export var level: Level
-@export var speed = 1
+@export var speed = 4
 
 var turn: int = 0
+var in_combat: bool = false
 var unit_id: int
 var id_path: Array
 var fraction: int

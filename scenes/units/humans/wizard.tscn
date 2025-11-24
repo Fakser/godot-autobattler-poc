@@ -32,7 +32,8 @@ unit = NodePath("../..")
 [node name="StateFollow" parent="StateMachine" node_paths=PackedStringArray("unit") instance=ExtResource("6_c643y")]
 unit = NodePath("../..")
 
-[node name="AI" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("6_0k8yu")]
+[node name="AI" parent="." node_paths=PackedStringArray("default_action", "unit") instance=ExtResource("6_0k8yu")]
+default_action = NodePath("ActionIdle")
 unit = NodePath("..")
 
 [node name="ActionAttackMeele" parent="AI" instance=ExtResource("7_r1xuc")]

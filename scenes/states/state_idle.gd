@@ -10,15 +10,9 @@ func update(delta: float):
 	
 func physics_update(delta: float):
 	if unit.turn < unit.level.turn:
-		if not unit.ai.current_action or unit.ai.current_action.done:
-			unit.ai.set_new_action()
-		if unit.ai.current_action is ActionAttackMeele:
-			if not unit.ai.current_action.is_in_meele_distance(unit):
-				state_exited.emit(self, "statefollow")
-			else:
-				state_exited.emit(self, "stateidle")
-		if unit.ai.current_action is ActionWalk:
-			state_exited.emit(self, "statewalk")
-		elif unit.ai.current_action is ActionIdle:
+		if unit.in_combat and not unit.ai.current_action.is_combat_action():
 			unit.ai.current_action.done = true
-			state_exited.emit(self, "stateidle")
+		if unit.ai.current_action.done:
+			unit.ai.set_new_action()
+		var new_state = unit.ai.current_action.state_transition(self.unit)
+		state_exited.emit(self, new_state)

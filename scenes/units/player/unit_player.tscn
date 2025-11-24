@@ -31,9 +31,12 @@ unit = NodePath("../..")
 [node name="StateWalk" parent="StateMachine" node_paths=PackedStringArray("unit") instance=ExtResource("5_r1q1w")]
 unit = NodePath("../..")
 
-[node name="AI" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("6_ug1pe")]
+[node name="AI" parent="." node_paths=PackedStringArray("default_action", "unit") instance=ExtResource("6_ug1pe")]
+default_action = NodePath("ActionIdle")
 unit = NodePath("..")
 
 [node name="ActionIdle" parent="AI" instance=ExtResource("7_r1q1w")]
 
 [node name="ActionWalk" parent="AI" instance=ExtResource("7_vglsx")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

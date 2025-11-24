@@ -1,18 +1,16 @@
 extends State
 class_name StateFollow
 
-#var target_current_position: Vector2
 var target_path_next_tile: Vector2
-#var tiles_around_target: Array = [
-	#Vector2i(0, 1), Vector2i(1, 0), Vector2i(1, 1),
-	#Vector2i(0, -1), Vector2i(-1, 0), Vector2i(-1, -1),
-	#Vector2i(1, -1), Vector2i(-1, 1),]
+
+func update(delta: float):
+	unit.animation.play("idle")
 
 func get_id_path(unit_position_id: Vector2i, target_position_id: Vector2i) -> Array:
 	#for tile in tiles_around_target:
 	var id_path = unit.level.astar_grid.get_id_path(
 		unit_position_id,
-		target_position_id, # + tile,
+		target_position_id,
 		true
 	).slice(1)
 	if not id_path.is_empty():
