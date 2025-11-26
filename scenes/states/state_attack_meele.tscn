@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf6vbk6uigwo2"]
+
+[ext_resource type="Script" uid="uid://cenwi3w4on3ox" path="res://scenes/states/state_attack_meele.gd" id="1_4hcaa"]
+
+[node name="StateAttackMeele" type="Node"]
+script = ExtResource("1_4hcaa")
+metadata/_custom_type_script = "uid://bim5wrc8i8eo"

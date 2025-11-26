@@ -22,8 +22,8 @@ func _set_units() -> void:
 	for i in children.size():
 		var child = children[i]
 		if child is Unit:
-			child.position = tile_map.map_to_local(
-				tile_map.local_to_map(child.position))
+			child.global_position = tile_map.map_to_local(
+				tile_map.local_to_map(child.global_position))
 			child.set_unit_id(i)
 
 func _update_units() -> void:
@@ -69,6 +69,13 @@ func _update_tile_grid() -> void:
 		new_tile_grid[unit_position.x][unit_position.y].unit = unit
 	self.tile_grid = new_tile_grid
 
+func _update_projectiles() -> void:
+	var children = get_children()
+	for i in children.size():
+		var child = children[i]
+		if child is Projectile and child.range < 0:
+			child.queue_free()
+
 func safe_turn_update() -> bool:
 	for unit in units.values():
 		if unit.turn < self.turn:
@@ -77,12 +84,13 @@ func safe_turn_update() -> bool:
 	return true
 
 func _process(delta: float) -> void:
+	_update_projectiles()
 	if update_turn:
 		turn += 1
 		update_turn = false
 		_update_units()
 		_update_astar()
 		_update_tile_grid() 
-		for unit in units.values():
-			if unit.ai.current_action:
-				print(unit.fraction, ", ", unit.state_machine.current_state.name, ", ", unit.ai.current_action, ", ", unit.ai.current_action.target)
+		#for unit in units.values():
+			#if unit.ai.current_action:
+				#print(unit.fraction, ", ", unit.state_machine.current_state.name, ", ", unit.ai.current_action, ", ", unit.ai.current_action.target)

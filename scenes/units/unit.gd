@@ -6,6 +6,7 @@ class_name Unit
 @export var ai: AI
 @export var level: Level
 @export var speed = 4
+@export var weapon: Weapon
 
 var turn: int = 0
 var in_combat: bool = false

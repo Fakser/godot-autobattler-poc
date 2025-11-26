@@ -1,6 +1,28 @@
 [gd_scene load_steps=2 format=3 uid="uid://dj1fufuoxn1g0"]
 
-[ext_resource type="Script" uid="uid://dsk50xs8xdy7p" path="res://scenes/units/unit.gd" id="1_qgilm"]
+[sub_resource type="GDScript" id="GDScript_5c8dj"]
+script/source = "extends Node2D
+class_name Unit
+
+@export var animation: AnimatedSprite2D
+@export var state_machine: StateMachine
+@export var ai: AI
+@export var level: Level
+@export var speed = 4
+
+var turn: int = 0
+var in_combat: bool = false
+var unit_id: int
+var id_path: Array
+var fraction: int
+var _fractions: Fractions
+
+func set_unit_id(id: int) -> void:
+	if self.unit_id:
+		return
+	else:
+		self.unit_id = id
+"
 
 [node name="Unit" type="Node2D"]
-script = ExtResource("1_qgilm")
+script = SubResource("GDScript_5c8dj")

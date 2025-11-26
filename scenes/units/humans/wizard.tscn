@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4r0iji8gs88c"]
+[gd_scene load_steps=13 format=3 uid="uid://c4r0iji8gs88c"]
 
 [ext_resource type="Script" uid="uid://dirb2mgpo2drw" path="res://scenes/units/humans/wizard.gd" id="1_qh4ux"]
+[ext_resource type="PackedScene" uid="uid://6dm6gbcd1lw5" path="res://scenes/equipment/weapons/knife.tscn" id="2_0k8yu"]
 [ext_resource type="PackedScene" uid="uid://baordfccsyige" path="res://scenes/animations/animation_wizard.tscn" id="2_qh4ux"]
 [ext_resource type="PackedScene" uid="uid://dgs5wqmk1858f" path="res://scenes/states/state_machine.tscn" id="3_r1xuc"]
 [ext_resource type="PackedScene" uid="uid://plpm7ofw6w85" path="res://scenes/states/state_walk.tscn" id="4_c643y"]
@@ -8,20 +9,29 @@
 [ext_resource type="PackedScene" uid="uid://dcdvfuy1gvybq" path="res://scenes/AI/AI.tscn" id="6_0k8yu"]
 [ext_resource type="PackedScene" uid="uid://b4ykuqbuxa4fn" path="res://scenes/states/state_follow.tscn" id="6_c643y"]
 [ext_resource type="PackedScene" uid="uid://dd0rgb4upb4og" path="res://scenes/AI/actions/action_walk.tscn" id="7_6fpes"]
+[ext_resource type="PackedScene" uid="uid://cf6vbk6uigwo2" path="res://scenes/states/state_attack_meele.tscn" id="7_iwgtw"]
 [ext_resource type="PackedScene" uid="uid://ccswq5ld6w2qi" path="res://scenes/AI/actions/action_attack_meele.tscn" id="7_r1xuc"]
 [ext_resource type="PackedScene" uid="uid://b7ltulumdkfkt" path="res://scenes/AI/actions/action_idle.tscn" id="8_l588s"]
 
-[node name="Wizard" type="Node2D" node_paths=PackedStringArray("animation", "state_machine", "ai")]
+[node name="Wizard" type="Node2D" node_paths=PackedStringArray("animation", "state_machine", "ai", "weapon")]
 script = ExtResource("1_qh4ux")
 animation = NodePath("AnimationWizard")
 state_machine = NodePath("StateMachine")
 ai = NodePath("AI")
+speed = 1
+weapon = NodePath("Knife")
 metadata/_custom_type_script = "uid://dsk50xs8xdy7p"
+
+[node name="Knife" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("2_0k8yu")]
+unit = NodePath("..")
 
 [node name="AnimationWizard" parent="." instance=ExtResource("2_qh4ux")]
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_r1xuc")]
 initial_state = NodePath("StateIdle")
+
+[node name="StateAttackMeele" parent="StateMachine" node_paths=PackedStringArray("unit") instance=ExtResource("7_iwgtw")]
+unit = NodePath("../..")
 
 [node name="StateWalk" parent="StateMachine" node_paths=PackedStringArray("unit") instance=ExtResource("4_c643y")]
 unit = NodePath("../..")

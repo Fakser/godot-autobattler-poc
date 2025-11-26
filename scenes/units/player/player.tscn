@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://du6ct0ka5dq5v"]
+
+[ext_resource type="Script" uid="uid://biiohlgkkxbmu" path="res://scenes/units/player/player.gd" id="1_sa5jc"]
+[ext_resource type="PackedScene" uid="uid://j1kdwnla04va" path="res://scenes/ui/tile_marker.tscn" id="2_c7ys8"]
+[ext_resource type="PackedScene" uid="uid://b77rswxv1lqus" path="res://scenes/animations/animation_player.tscn" id="3_minvm"]
+[ext_resource type="PackedScene" uid="uid://dgs5wqmk1858f" path="res://scenes/states/state_machine.tscn" id="4_pw8sp"]
+[ext_resource type="PackedScene" uid="uid://cnmv1vac1726e" path="res://scenes/states/state_idle.tscn" id="5_iddm0"]
+[ext_resource type="PackedScene" uid="uid://plpm7ofw6w85" path="res://scenes/states/state_walk.tscn" id="6_x7qu0"]
+[ext_resource type="PackedScene" uid="uid://dcdvfuy1gvybq" path="res://scenes/AI/AI.tscn" id="7_rb86x"]
+[ext_resource type="PackedScene" uid="uid://b7ltulumdkfkt" path="res://scenes/AI/actions/action_idle.tscn" id="8_g0wty"]
+[ext_resource type="PackedScene" uid="uid://dd0rgb4upb4og" path="res://scenes/AI/actions/action_walk.tscn" id="9_fayx6"]
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("animation", "state_machine", "ai")]
+script = ExtResource("1_sa5jc")
+animation = NodePath("AnimationPlayer")
+state_machine = NodePath("StateMachine")
+ai = NodePath("AI")
+speed = 1
+metadata/_custom_type_script = "uid://dsk50xs8xdy7p"
+
+[node name="TileMarker" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("2_c7ys8")]
+unit = NodePath("..")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("3_minvm")]
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("4_pw8sp")]
+initial_state = NodePath("StateIdle")
+
+[node name="StateIdle" parent="StateMachine" node_paths=PackedStringArray("unit") instance=ExtResource("5_iddm0")]
+unit = NodePath("../..")
+
+[node name="StateWalk" parent="StateMachine" node_paths=PackedStringArray("unit") instance=ExtResource("6_x7qu0")]
+unit = NodePath("../..")
+
+[node name="AI" parent="." node_paths=PackedStringArray("default_action", "unit") instance=ExtResource("7_rb86x")]
+default_action = NodePath("ActionIdle")
+unit = NodePath("..")
+
+[node name="ActionIdle" parent="AI" instance=ExtResource("8_g0wty")]
+
+[node name="ActionWalk" parent="AI" instance=ExtResource("9_fayx6")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

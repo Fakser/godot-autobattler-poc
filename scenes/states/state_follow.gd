@@ -4,7 +4,7 @@ class_name StateFollow
 var target_path_next_tile: Vector2
 
 func update(delta: float):
-	unit.animation.play("idle")
+	unit.animation.play("walk")
 
 func get_id_path(unit_position_id: Vector2i, target_position_id: Vector2i) -> Array:
 	#for tile in tiles_around_target:

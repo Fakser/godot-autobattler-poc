@@ -3,7 +3,7 @@ class_name ActionWalk
 
 func get_action_value(unit: Unit, tile: Tile) -> int:
 	if not tile.unit:
-		return randi_range(0, 10)
+		return randi_range(0, 3)
 	else:
 		return -10
 

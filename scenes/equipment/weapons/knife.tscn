@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://6dm6gbcd1lw5"]
+
+[ext_resource type="Script" uid="uid://digrcmuen7fkf" path="res://scenes/equipment/weapons/knife.gd" id="1_mpatm"]
+[ext_resource type="PackedScene" uid="uid://d1lexkyw4yjou" path="res://scenes/equipment/weapons/projectile/projectile.tscn" id="2_6y704"]
+
+[node name="Knife" type="Node" node_paths=PackedStringArray("projectile")]
+script = ExtResource("1_mpatm")
+projectile = NodePath("Projectile")
+damage = 5
+range = 16
+projectile_speed = 1
+attacks_per_turn = 1
+metadata/_custom_type_script = "uid://cccw676m8dsdo"
+
+[node name="Projectile" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("2_6y704")]
+visible = false
+weapon = NodePath("..")

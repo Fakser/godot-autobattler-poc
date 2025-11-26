@@ -1,5 +1,5 @@
 extends Unit
-#class_name UnitPlayer
+class_name Player
 @onready var camera = $Camera2D
 
 # Called when the node enters the scene tree for the first time.

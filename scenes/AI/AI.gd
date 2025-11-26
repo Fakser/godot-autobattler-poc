@@ -48,6 +48,5 @@ func set_new_action() -> void:
 		current_action.done = false
 		if current_action.is_combat_action():
 			unit.level.units[current_action.target.unit.unit_id].in_combat = true
-		print(possible_actions[0])
 	else:
 		current_action = self.default_action
