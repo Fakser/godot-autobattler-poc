@@ -40,7 +40,7 @@ func _update_astar() -> void:
 	var used_rect = tile_map.get_used_rect()
 	astar_grid.region = used_rect
 	astar_grid.cell_size = Vector2(16, 16)
-	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ALWAYS
 	astar_grid.update()
 	for x in used_rect.size.x:
 		for y in used_rect.size.y:

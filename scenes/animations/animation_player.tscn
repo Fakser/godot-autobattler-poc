@@ -47,4 +47,4 @@ animations = [{
 
 [node name="AnimationPlayer" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_kgknf")
-animation = &"dead"
+animation = &"attack"

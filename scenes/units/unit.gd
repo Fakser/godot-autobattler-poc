@@ -30,4 +30,3 @@ func _on_area_entered(area: Area2D) -> void:
 		var current_state = area.state_machine.current_state
 		var initial_state_name = area.state_machine.initial_state.name.to_lower()
 		current_state.state_exited.emit(current_state, initial_state_name)
-		print("dupa")
