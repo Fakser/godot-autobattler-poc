@@ -21,24 +21,19 @@ func _ready() -> void:
 	self.damage=self.weapon.damage
 	self.attacking_unit_id=self.weapon.unit.unit_id
 
-func get_projectile_position_adj(direction: Vector2):
-	if direction == Vector2(0.0, 1.0):
-		return Vector2(8.0, -8.0)
-	elif direction == Vector2(1.0, 0.0):
-		return Vector2(-8.0, -8.0)
-	elif direction == Vector2(-1.0, 0.0):
-		return Vector2(8.0, 8.0)
-	elif direction == Vector2(0.0, -1.0):
-		return Vector2(-8.0, 8.0)
 
 func set_direction(target: Unit) -> void:
 	var target_unit_id = target.unit_id
 	var target_current_position = target.global_position
 	self.direction = self.weapon.unit.global_position.direction_to(target_current_position)
-	var position_vector_adj = get_projectile_position_adj(direction)
-	self.global_position = self.weapon.unit.global_position + position_vector_adj
+	self.global_position = self.weapon.unit.global_position
 	self.rotation = self.direction.angle()
-
+  
 func _physics_process(delta: float) -> void:
 	self.range -= speed
 	self.position += self.direction * self.speed
+
+func _on_projectile_area_entered(area):
+	if area is Unit and self.weapon.unit.unit_id != area.unit_id:
+		area.health.reduce(self.damage)
+		self.queue_free()

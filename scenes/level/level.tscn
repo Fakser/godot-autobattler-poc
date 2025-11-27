@@ -183,10 +183,22 @@ level = NodePath("..")
 position = Vector2(56, 203)
 level = NodePath("..")
 
-[node name="Wizard" parent="." node_paths=PackedStringArray("level") instance=ExtResource("4_hnne4")]
-position = Vector2(70, 152)
-level = NodePath("..")
-
 [node name="UnitPlayer" parent="." node_paths=PackedStringArray("level") instance=ExtResource("3_qkmgm")]
 position = Vector2(104, 151)
 level = NodePath("..")
+
+[node name="Wizard" parent="." node_paths=PackedStringArray("level") instance=ExtResource("4_hnne4")]
+position = Vector2(22, 70)
+level = NodePath("..")
+
+[node name="Wizard2" parent="." node_paths=PackedStringArray("level") instance=ExtResource("4_hnne4")]
+position = Vector2(174, 32)
+level = NodePath("..")
+
+[node name="Wizard3" parent="." node_paths=PackedStringArray("level") instance=ExtResource("4_hnne4")]
+position = Vector2(242, 83)
+level = NodePath("..")
+
+[node name="TurnTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

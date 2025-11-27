@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn5qo6tf5t5mx"]
+
+[ext_resource type="Script" uid="uid://bkn3i85h8tiyh" path="res://scenes/states/state_dead.gd" id="1_sdopv"]
+
+[node name="StateDead" type="Node"]
+script = ExtResource("1_sdopv")
+metadata/_custom_type_script = "uid://bim5wrc8i8eo"

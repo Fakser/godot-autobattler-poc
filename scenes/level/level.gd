@@ -32,7 +32,8 @@ func _update_units() -> void:
 	for i in children.size():
 		var child = children[i]
 		if child is Unit:
-			units[i] = child
+			self.units[child.unit_id] = child
+			child.turn_start_delay.start()
 
 func _update_astar() -> void:
 	self.astar_grid = AStarGrid2D.new()

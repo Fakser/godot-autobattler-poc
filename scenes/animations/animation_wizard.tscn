@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://baordfccsyige"]
+[gd_scene load_steps=5 format=3 uid="uid://baordfccsyige"]
 
 [ext_resource type="Texture2D" uid="uid://dsblca6gby5iw" path="res://scenes/level/tilemap_packed.png" id="1_w6osb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rodfr"]
 atlas = ExtResource("1_w6osb")
 region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6osb"]
+atlas = ExtResource("1_w6osb")
+region = Rect2(224, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_flvsv"]
 animations = [{
@@ -14,6 +18,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6osb")
+}],
+"loop": true,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -35,4 +47,4 @@ animations = [{
 
 [node name="AnimationWizard" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_flvsv")
-animation = &"walk"
+animation = &"dead"

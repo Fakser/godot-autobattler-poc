@@ -1,18 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://ne5sispbip78"]
+[gd_scene load_steps=10 format=3 uid="uid://ne5sispbip78"]
 
 [ext_resource type="Script" uid="uid://d118ta8ebncw0" path="res://scenes/units/trees/unit_tree.gd" id="1_erdvy"]
 [ext_resource type="PackedScene" uid="uid://c436fuctra8j0" path="res://scenes/animations/animation_tree.tscn" id="2_d6rlp"]
+[ext_resource type="PackedScene" uid="uid://dho4hm43tv7tw" path="res://scenes/components/common/health.tscn" id="2_kdusm"]
 [ext_resource type="PackedScene" uid="uid://dgs5wqmk1858f" path="res://scenes/states/state_machine.tscn" id="3_vt7ih"]
 [ext_resource type="PackedScene" uid="uid://cnmv1vac1726e" path="res://scenes/states/state_idle.tscn" id="4_kdusm"]
 [ext_resource type="PackedScene" uid="uid://dcdvfuy1gvybq" path="res://scenes/AI/AI.tscn" id="5_vt7ih"]
 [ext_resource type="PackedScene" uid="uid://b7ltulumdkfkt" path="res://scenes/AI/actions/action_idle.tscn" id="6_kdusm"]
+[ext_resource type="PackedScene" uid="uid://cn5qo6tf5t5mx" path="res://scenes/states/state_dead.tscn" id="6_mubjn"]
 
-[node name="UnitTree" type="Node2D" node_paths=PackedStringArray("animation", "state_machine", "ai")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vt7ih"]
+radius = 4.0
+height = 14.0
+
+[node name="UnitTree" type="Area2D" node_paths=PackedStringArray("animation", "state_machine", "ai", "health", "turn_start_delay")]
 script = ExtResource("1_erdvy")
 animation = NodePath("AnimationTree")
 state_machine = NodePath("StateMachine")
 ai = NodePath("AI")
-metadata/_custom_type_script = "uid://dsk50xs8xdy7p"
+speed = 0
+health = NodePath("Health")
+turn_start_delay = NodePath("TurnStartDelay")
+
+[node name="Health" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("2_kdusm")]
+max = 100
+unit = NodePath("..")
 
 [node name="AnimationTree" parent="." instance=ExtResource("2_d6rlp")]
 
@@ -22,8 +34,18 @@ initial_state = NodePath("StateIdle")
 [node name="StateIdle" parent="StateMachine" node_paths=PackedStringArray("unit") instance=ExtResource("4_kdusm")]
 unit = NodePath("../..")
 
+[node name="StateDead" parent="StateMachine" node_paths=PackedStringArray("unit") instance=ExtResource("6_mubjn")]
+unit = NodePath("../..")
+
 [node name="AI" parent="." node_paths=PackedStringArray("default_action", "unit") instance=ExtResource("5_vt7ih")]
 default_action = NodePath("ActionIdle")
 unit = NodePath("..")
 
 [node name="ActionIdle" parent="AI" instance=ExtResource("6_kdusm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vt7ih")
+
+[node name="TurnStartDelay" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
